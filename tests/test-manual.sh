@@ -40,6 +40,8 @@ if [ "$FMT" == "" ] || [ "$FMT" == ".jpg" ] ; then
 	  echo "Failed."
 	  echo "SEAL-related strings from failed attempt:"
 	  strings $TESTDIR/test-signed-remote-manual-comment.jpg | grep -i seal
+	  echo "Internal variables:"
+	  sealtool -vv test-manual.dir/test-signed-remote-manual-comment.jpg
 	  exit 1
   fi
 
