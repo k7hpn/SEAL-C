@@ -36,7 +36,12 @@ if [ "$FMT" == "" ] || [ "$FMT" == ".jpg" ] ; then
   echo ""
   echo "#### Manual Non-standard JPEG comment"
   ./SignManual.sh -Comment $TESTDIR/test-signed-remote-manual-comment.jpg
-  if [ "$?" != "0" ] ; then echo "Failed."; exit 1; fi
+  if [ "$?" != "0" ] ; then 
+	  echo "Failed."
+	  echo "SEAL-related strings from failed attempt:"
+	  strings $TESTDIR/test-signed-remote-manual-comment.jpg | grep -i seal
+	  exit 1
+  fi
 
   echo ""
   echo "#### Manual EXIF"
