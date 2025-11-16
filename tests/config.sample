@@ -1,9 +1,10 @@
 # Sample config file for running remote tests
 # Add "apikey" and "id" and populate them
-domain=signmydata.com
-digestalg=sha256
-keyalg=rsa
-kv=1
-sf=date:hex
 apiurl=https://signmydata.com/?sign
+digestalg=sha256
+domain=signmydata.com
+keyalg=rsa
+keyfile=./seal-private.pem
+kv=1
 outfile=./%b-seal%e
+sf=date3:base64a
