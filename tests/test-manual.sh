@@ -38,10 +38,15 @@ if [ "$FMT" == "" ] || [ "$FMT" == ".jpg" ] ; then
   ./SignManual.sh -Comment $TESTDIR/test-signed-remote-manual-comment.jpg
   if [ "$?" != "0" ] ; then 
 	  echo "Failed."
+	  echo "File:"
+	  ls -la "$TESTDIR/test-signed-remote-manual-comment.jpg"
 	  echo "SEAL-related strings from failed attempt:"
-	  strings $TESTDIR/test-signed-remote-manual-comment.jpg | grep -i seal
-	  echo "Internal variables:"
-	  sealtool -vv test-manual.dir/test-signed-remote-manual-comment.jpg
+	  echo "--- STRINGS START ---"
+	  strings "$TESTDIR/test-signed-remote-manual-comment.jpg" | grep -i seal
+	  echo "--- STRINGS END ---"
+	  echo "--- INTERNAL VARIABLES START---"
+	  ../bin/sealtool -vv "$TESTDIR/test-signed-remote-manual-comment.jpg"
+	  echo "--- INTERNAL VARIABLES END---"
 	  exit 1
   fi
 
